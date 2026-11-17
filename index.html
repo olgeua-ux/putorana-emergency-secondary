@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17211e">
+  <meta name="description" content="Putorana Travel — связь с командой по телефону, почте и Telegram.">
+  <title>Putorana Travel — мы на связи</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f3f1e9;
+      --muted: #c3c7bc;
+      --green: #a8b99e;
+      --copper: #d6a779;
+      --night: #17211e;
+      --panel: rgba(20, 31, 28, .76);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 72% 35%, rgba(139, 157, 132, .22), transparent 34rem),
+        linear-gradient(145deg, #17211e 0%, #202c28 58%, #303a32 100%);
+    }
+
+    .page {
+      position: relative;
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .landscape {
+      position: absolute;
+      z-index: -1;
+      right: -12vw;
+      bottom: -2px;
+      left: -10vw;
+      height: min(46vh, 390px);
+      opacity: .52;
+      background: linear-gradient(180deg, rgba(70, 85, 70, 0) 0%, rgba(88, 101, 79, .33) 100%);
+      clip-path: polygon(0 77%, 8% 68%, 16% 72%, 27% 47%, 35% 60%, 43% 34%, 51% 58%, 59% 41%, 68% 64%, 78% 39%, 87% 58%, 95% 49%, 100% 57%, 100% 100%, 0 100%);
+    }
+
+    .landscape::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 54%;
+      content: "";
+      background: linear-gradient(180deg, rgba(165, 178, 142, .16), rgba(20, 30, 27, .08));
+      clip-path: polygon(0 42%, 13% 23%, 25% 47%, 39% 10%, 49% 42%, 62% 17%, 76% 48%, 88% 20%, 100% 43%, 100% 100%, 0 100%);
+    }
+
+    header, main, footer { width: min(100% - 48px, 1120px); margin-inline: auto; }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 28px;
+      border-bottom: 1px solid rgba(243, 241, 233, .16);
+    }
+
+    .brand {
+      font-size: .82rem;
+      font-weight: 650;
+      letter-spacing: .18em;
+    }
+
+    .edition {
+      color: var(--muted);
+      font-size: .76rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    main {
+      display: grid;
+      flex: 1;
+      align-items: center;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+      gap: clamp(40px, 9vw, 136px);
+      padding-block: clamp(64px, 12vh, 132px);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 25px;
+      color: var(--green);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 16px rgba(168, 185, 158, .75);
+      content: "";
+    }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7.2vw, 6.6rem);
+      font-weight: 400;
+      letter-spacing: -.055em;
+      line-height: .99;
+    }
+
+    h1 span { color: var(--copper); }
+
+    .intro {
+      max-width: 510px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.7vw, 1.18rem);
+      line-height: 1.7;
+    }
+
+    .contact-card {
+      padding: clamp(24px, 4vw, 38px);
+      border: 1px solid rgba(243, 241, 233, .18);
+      border-radius: 3px;
+      background: var(--panel);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .13);
+      backdrop-filter: blur(12px);
+    }
+
+    .contact-card h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+    }
+
+    .contact-card > p {
+      margin: 9px 0 25px;
+      color: var(--muted);
+      font-size: .93rem;
+      line-height: 1.55;
+    }
+
+    .links { display: grid; gap: 10px; }
+
+    .link {
+      display: flex;
+      min-height: 55px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border: 1px solid rgba(243, 241, 233, .24);
+      color: var(--ink);
+      font-size: .96rem;
+      text-decoration: none;
+      transition: border-color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .link::after { color: var(--copper); content: "↗"; font-size: 1.05rem; }
+    .link:hover { transform: translateY(-1px); border-color: var(--copper); background: rgba(214, 167, 121, .08); }
+    .link:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+
+    .link.primary {
+      border-color: var(--copper);
+      color: #17211e;
+      background: var(--copper);
+      font-weight: 650;
+    }
+
+    .link.primary::after { color: #17211e; }
+    .link.primary:hover { background: #e2b88e; }
+
+    .contact-note {
+      margin: 18px 0 0;
+      color: #aeb6aa;
+      font-size: .76rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding-block: 22px;
+      border-top: 1px solid rgba(243, 241, 233, .16);
+      color: #aeb6aa;
+      font-size: .76rem;
+      letter-spacing: .04em;
+    }
+
+    @media (max-width: 760px) {
+      header, main, footer { width: min(100% - 36px, 540px); }
+      header { padding-block: 22px; }
+      .edition { font-size: .65rem; }
+      main { grid-template-columns: 1fr; gap: 42px; padding-block: 64px 72px; }
+      h1 { font-size: clamp(3.1rem, 13vw, 5rem); }
+      .intro { margin-top: 21px; }
+      .contact-card { padding: 24px; }
+      footer { flex-direction: column; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="landscape" aria-hidden="true"></div>
+    <header>
+      <div class="brand">PUTORANA.TRAVEL</div>
+      <div class="edition">Запасной адрес</div>
+    </header>
+
+    <main>
+      <section aria-labelledby="page-title">
+        <p class="eyebrow">Путорана · команда на связи</p>
+        <h1 id="page-title">Плато.<br>Мы <span>на связи.</span></h1>
+        <p class="intro">Это резервный сайт Putorana Travel. Команда Putorana Travel ответит на вопросы об экспедициях и поможет связаться с нами напрямую.</p>
+      </section>
+
+      <section class="contact-card" aria-labelledby="contact-title">
+        <h2 id="contact-title">Связаться с нами</h2>
+        <p>Выбери удобный способ — мы ответим, как только сможем.</p>
+        <nav class="links" aria-label="Контакты Putorana Travel">
+          <a class="link primary" href="tel:+79155368586">Позвонить · +7 915 536-85-86</a>
+          <a class="link" href="mailto:hello@putorana-travel.com">Написать на почту</a>
+        </nav>
+      </section>
+    </main>
+
+    <footer>
+      <span>PUTORANA TRAVEL</span>
+      <span>Норильск · плато Путорана</span>
+    </footer>
+  </div>
+</body>
+</html>
